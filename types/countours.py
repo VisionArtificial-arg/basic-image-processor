@@ -12,12 +12,7 @@ class Contours:
     def __iter__(self) -> Iterator[Any]:
         yield from self.contours
 
-    @classmethod
-    def get_contours(
-        cls,
-        image,
-        mode: int = cv.RETR_EXTERNAL,
-        method: int = cv.CHAIN_APPROX_SIMPLE,
-    ) -> "Contours":
+    def __init__(self, image, mode: int = cv.RETR_EXTERNAL, method: int = cv.CHAIN_APPROX_SIMPLE,) -> None :
         contours, hierarchy = cv.findContours(image, mode, method)
-        return cls(contours=contours, hierarchy=hierarchy)
+        object.__setattr__(self, "contours", contours)
+        object.__setattr__(self, "hierarchy", hierarchy)
