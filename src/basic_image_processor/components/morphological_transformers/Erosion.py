@@ -1,10 +1,13 @@
-import cv2 as cv
-import numpy as np
-from .MorphologicalTransformation import MorphologicalTransformation
+import cv2
+from .base import MorphologicalTransformation
+from cv2.typing import MatLike
 
 
 class Erosion(MorphologicalTransformation):
-    def apply(self, image, kernel_size=(5, 5), iterations=1):
-        kernel = np.ones(kernel_size, np.uint8)
-        return cv.erode(image, kernel, iterations=iterations)
-
+    def apply(
+        self: "MorphologicalTransformation",
+        image: MatLike,
+        kernel: MatLike,
+        iterations: int,
+    ) -> MatLike:
+        return cv2.erode(image, kernel, iterations=iterations)

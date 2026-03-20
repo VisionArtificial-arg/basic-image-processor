@@ -1,3 +1,4 @@
-from .Countours import ContourResult
+from .countours import Contours
 
-__all__ = [ "Contours" ]
+__all__ = ["Contours"]
+
