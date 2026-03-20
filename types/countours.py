@@ -5,7 +5,7 @@ import cv2 as cv
 
 
 @dataclass(frozen=True)
-class ContourResult:
+class Contours:
     contours: list
     hierarchy: Any
 
@@ -13,11 +13,11 @@ class ContourResult:
         yield from self.contours
 
     @classmethod
-    def from_image(
+    def get_contours(
         cls,
         image,
         mode: int = cv.RETR_EXTERNAL,
         method: int = cv.CHAIN_APPROX_SIMPLE,
-    ) -> "ContourResult":
+    ) -> "Contours":
         contours, hierarchy = cv.findContours(image, mode, method)
         return cls(contours=contours, hierarchy=hierarchy)
