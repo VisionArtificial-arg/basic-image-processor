@@ -4,7 +4,7 @@ from .MorphologicalTransformation import MorphologicalTransformation
 
 
 class Closing(MorphologicalTransformation):
-
-    def apply(image, kernel_size=(5, 5), iterations=1):
+    def apply(self, image, kernel_size=(5, 5), iterations=1):
         kernel = np.ones(kernel_size, np.uint8)
         return cv.morphologyEx(image, cv.MORPH_CLOSE, kernel, iterations=iterations)
+
