@@ -1,9 +1,13 @@
 import cv2 as cv
-import numpy as np
 from .base import MorphologicalTransformation
+from cv2.typing import MatLike
 
 
 class Dilation(MorphologicalTransformation):
-    def apply(self, image, kernel_size=(5, 5), iterations=1):
-        kernel = np.ones(kernel_size, np.uint8)
+    def apply(
+        self: "MorphologicalTransformation",
+        image: MatLike,
+        kernel: MatLike,
+        iterations: int,
+    ) -> MatLike:
         return cv.dilate(image, kernel, iterations=iterations)

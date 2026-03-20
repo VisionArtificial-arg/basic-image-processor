@@ -1,9 +1,13 @@
-import cv2 as cv
-import numpy as np
+import cv2
 from .base import MorphologicalTransformation
+from cv2.typing import MatLike
 
 
 class Opening(MorphologicalTransformation):
-    def apply(self, image, kernel_size=(5, 5), iterations=1):
-        kernel = np.ones(kernel_size, np.uint8)
-        return cv.morphologyEx(image, cv.MORPH_OPEN, kernel, iterations=iterations)
+    def apply(
+        self: "MorphologicalTransformation",
+        image: MatLike,
+        kernel: MatLike,
+        iterations: int,
+    ) -> MatLike:
+        return cv2.morphologyEx(image, cv2.MORPH_OPEN, kernel, iterations=iterations)
